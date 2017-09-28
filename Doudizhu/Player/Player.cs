@@ -1,9 +1,9 @@
-﻿using Doudizhu.Card;
-using Doudizhu.Interface;
+﻿using MyGame.Interface;
+using System;
 using System.Collections.Generic;
 
 
-namespace Doudizhu.Player
+namespace MyGame
 {
     class Player : APlayer, IRoom
     {
@@ -23,6 +23,8 @@ namespace Doudizhu.Player
         {
             _id = id;
             _name = name;
+
+            EventMgr.Instance.RegistEvent(EventMsg.GameStart, OnGameStart);
         }
         
         public void SetImagePlayer(ImagePlayer imgPlayer)
@@ -50,5 +52,9 @@ namespace Doudizhu.Player
             return false;
         }
 
+        private void OnGameStart(EventMgrArgs args)
+        {
+            Console.WriteLine("游戏开始了" + _name);
+        }
     }
 }

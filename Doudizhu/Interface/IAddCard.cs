@@ -1,6 +1,4 @@
-﻿using Doudizhu.Card;
-
-namespace Doudizhu.Interface
+﻿namespace MyGame.Interface
 {
     interface IAddCard
     {

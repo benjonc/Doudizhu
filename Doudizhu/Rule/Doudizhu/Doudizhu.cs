@@ -1,11 +1,8 @@
-﻿using Doudizhu.Card;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Doudizhu.Rule.Doudizhu
+namespace MyGame
 {
     class Doudizhu : ARule
     {
@@ -38,6 +35,7 @@ namespace Doudizhu.Rule.Doudizhu
 
         private void CreateCards()
         {
+            _cards = new List<ACard>();
             for (int i = 1; i < 15; i++)
             {
                 for (int j = 1; j < 5; j++)
@@ -69,7 +67,11 @@ namespace Doudizhu.Rule.Doudizhu
         {
 
         }
-      
+     
+        public void Start()
+        {
+            EventMgr.Instance.Notify(EventMsg.GameStart, null);
+        }
 
     }
 }

@@ -1,12 +1,8 @@
-﻿using Doudizhu.Card;
-using Doudizhu.Interface;
-using System;
+﻿using System;
+using MyGame.Interface;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Doudizhu.Referee
+namespace MyGame
 {
     // 斗地主裁判类
     class DoudizhuReferee : AReferee, ICheckBigger
@@ -40,9 +36,7 @@ namespace Doudizhu.Referee
             if (cards == null) return 0;
             if (cards.Count == 1) return 1;
             if(cards.Count > 1)
-            {
-
-            }
+            { }
 
             return 0;
         }

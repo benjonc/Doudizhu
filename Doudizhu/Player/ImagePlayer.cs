@@ -1,12 +1,11 @@
-﻿using Doudizhu.Card;
-using Doudizhu.Interface;
+﻿using MyGame.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doudizhu.Player
+namespace MyGame
 {
     // 人偶类，存储卡牌相关
     class ImagePlayer : APlayer, IAddCard, IPlayCard

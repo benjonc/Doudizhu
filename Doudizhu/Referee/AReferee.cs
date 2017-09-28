@@ -1,5 +1,5 @@
 ﻿
-namespace Doudizhu.Referee
+namespace MyGame
 {
     // 裁判抽象类
     abstract class AReferee

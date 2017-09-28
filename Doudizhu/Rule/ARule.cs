@@ -1,14 +1,8 @@
-﻿using Doudizhu.Card;
-using Doudizhu.Player;
-using Doudizhu.Referee;
-using Doudizhu.Room;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Doudizhu.Rule
+
+namespace MyGame
 {
     // 游戏规则抽象类
     abstract class ARule

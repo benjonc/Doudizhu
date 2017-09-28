@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doudizhu.Ability
+namespace MyGame
 {
     // 玩家能力类
     abstract class AAbility

@@ -1,5 +1,5 @@
 ﻿
-namespace Doudizhu.Player
+namespace MyGame
 {
     // 抽象玩家类
     abstract class APlayer
