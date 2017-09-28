@@ -50,18 +50,24 @@
     <Compile Include="Interface\IAddCard.cs" />
     <Compile Include="Interface\ICheckBigger.cs" />
     <Compile Include="Interface\ICreateRoom.cs" />
+    <Compile Include="Interface\IDestroyRoom.cs" />
     <Compile Include="Interface\IExitRoom.cs" />
+    <Compile Include="Interface\IInsPlayer.cs" />
+    <Compile Include="Interface\IInstance.cs" />
     <Compile Include="Interface\IJoinRoom.cs" />
     <Compile Include="Interface\IPlayCard.cs" />
     <Compile Include="Interface\IRoom.cs" />
     <Compile Include="Player\APlayer.cs" />
     <Compile Include="Player\ImagePlayer.cs" />
     <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\PlayerMgr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Referee\AReferee.cs" />
     <Compile Include="Referee\DoudizhuReferee.cs" />
     <Compile Include="Room\ARoom.cs" />
+    <Compile Include="Room\DoudizhuRoom.cs" />
+    <Compile Include="Room\Room.cs" />
     <Compile Include="Rule\ARule.cs" />
     <Compile Include="Rule\Doudizhu\Doudizhu.cs" />
   </ItemGroup>

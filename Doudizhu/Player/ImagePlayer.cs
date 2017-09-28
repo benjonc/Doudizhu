@@ -39,5 +39,39 @@ namespace MyGame
         {
             _cards.Clear();
         }
+
+        public void ShowCard()
+        {
+            Console.WriteLine("------------------" + ((Player)_master).Name + "的牌是：");
+            SortCard();
+            foreach (var card in _cards)
+            {
+                var c = (PokerCard)card;
+                Console.WriteLine(c.Dsc);
+            }
+            Console.WriteLine(((Player)_master).Name + "的牌结束！------------------");
+        }
+
+        private void SortCard()
+        {
+            for(int i = 0; i < _cards.Count; i++)
+            {
+                for(int j = i; j < _cards.Count; j++)
+                {
+                    var c1 = (PokerCard)_cards[i];
+                    var c2 = (PokerCard)_cards[j];
+
+                    bool b1 = c1.Value > c2.Value;
+                    bool b2 = (c1.Value == c2.Value) && (c1.Type < c2.Type);
+
+                    if (b1 || b2)
+                    {
+                        var c3 = _cards[i];
+                        _cards[i] = _cards[j];
+                        _cards[j] = c3;
+                    }
+                }
+            }
+        }
     }
 }

@@ -25,11 +25,19 @@ namespace MyGame
             _name = name;
 
             EventMgr.Instance.RegistEvent(EventMsg.GameStart, OnGameStart);
+
+            ImagePlayer imgPlayer = new ImagePlayer(this);
+            SetImagePlayer(imgPlayer);
         }
         
         public void SetImagePlayer(ImagePlayer imgPlayer)
         {
             _imgPlayer = imgPlayer;
+        }
+
+        public ImagePlayer ImgPlayer
+        {
+            get { return _imgPlayer; }            
         }
 
         public void ClearImgPlayer()

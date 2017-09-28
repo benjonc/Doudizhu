@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyGame.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,13 +56,15 @@ namespace MyGame
     // 消息定义
     enum EventMsg
     {
+        SatisfyPlayers,
+        PlayerEnterRoom,
         GameStart,
 
     }
 
-    class EventMgr
+    class EventMgr // : IInstance
     {
-        private EventMgr() { }        
+        private EventMgr() { }
         private static EventMgr _instance;
         public static EventMgr Instance
         {
@@ -69,10 +72,15 @@ namespace MyGame
             {
                 if (_instance == null)
                     _instance = new EventMgr();
+
                 return _instance;
-            }
+            }            
         }
-        
+
+        //public T Instance<T>() where T : class, new()
+        //{
+        //    return ((IInstance)_instance).Instance<T>();
+        //}
 
         private Dictionary<EventMsg, List<MgrEventHandler>> _events;
 
@@ -109,6 +117,6 @@ namespace MyGame
             {
                 _events[eventMsg].Remove(e);
             }
-        }
+        }       
     }
 }
