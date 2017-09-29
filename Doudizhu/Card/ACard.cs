@@ -15,5 +15,7 @@ namespace MyGame
         protected int _value;
         protected int _type;
         protected string _dsc;
+        protected bool _isShow;
+        protected int _id;
     }
 }

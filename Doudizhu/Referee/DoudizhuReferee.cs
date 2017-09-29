@@ -7,10 +7,29 @@ namespace MyGame
     // 斗地主裁判类
     class DoudizhuReferee : AReferee, ICheckBigger
     {
+        // 玩家的数量
         public const int PLAYERCOUNT = 3;
+        // 牌的数量
+        public const int CARDSCOUNT = 54;
+        // 发牌的间隔数量（只读或者私有）
+        public int LicensingInterval = 1;
+        // 地主标记牌（只读）
+        public ACard DizhuMarkCard { get { return _dizhuMarkCard; } }
+        // 地主剩余三张牌（判断条件是否显示（只读））
+        public List<ACard> DizhuCards { get { return _dizhuCards; } }
+
         private int _readyCnt = 0;
         private int _roomId = 0;
+        private ACard _dizhuMarkCard;
+        private List<ACard> _dizhuCards;
         private ImagePlayer _player1, _player2, _player3;
+
+        private Random GetRandom()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            Random random = new Random(Convert.ToInt32(ts.TotalSeconds));
+            return random;
+        }
 
         private void OnPlayerReady(EventMgrArgs args)
         {
@@ -26,6 +45,8 @@ namespace MyGame
 
         public DoudizhuReferee()
         {
+            _cards = new List<ACard>();
+
             EventMgr.Instance.RegistEvent(EventMsg.PlayerReady, OnPlayerReady);
         }
 
@@ -56,25 +77,47 @@ namespace MyGame
             _player3 = p3;
         }
 
+        public PokerCard GetCardById(int cardId)
+        {
+            foreach(var card in _cards)
+            {
+                var card1 = (PokerCard)card;
+                if(card1.Id == cardId)
+                {
+                    return card1;
+                }
+            }
+            return null;
+        }
+
+        // 发牌
         public void Licensing(List<ACard> cards)
         {
             int cardCount = cards.Count - 1;
             while(cardCount >= 0)
             {
-                PokerCard card1 = (PokerCard)cards[cardCount];
-                _player1.AddCard(card1);
-                cardCount -= 1;
-
-                PokerCard card2 = (PokerCard)cards[cardCount];
-                _player2.AddCard(card2);
-                cardCount -= 1;
-
-                PokerCard card3 = (PokerCard)cards[cardCount];
-                _player3.AddCard(card3);
-                cardCount -= 1;
+                for (int i = 1; i <= PLAYERCOUNT; i++)
+                {
+                    for (int j = 0; j < LicensingInterval; j++)
+                    {
+                        PokerCard card = (PokerCard)cards[cardCount];
+                        cardCount -= 1;
+                        switch (i)
+                        {
+                            case 1:
+                                _player1.AddCard(card.Id);
+                                break;
+                            case 2:
+                                _player2.AddCard(card.Id);
+                                break;
+                            case 3:
+                                _player3.AddCard(card.Id);
+                                break;
+                        }
+                    }
+                }
             }
         }
-
 
         public bool CheckBigger(List<ACard> oldCards, List<ACard> newCards)
         {
@@ -105,6 +148,44 @@ namespace MyGame
             { }
 
             return 0;
+        }
+
+        // 创建卡牌
+        private void CreateCards()
+        {
+            for (int i = 1; i < 15; i++)
+            {
+                for (int j = 1; j < 5; j++)
+                {
+                    if ((i > 13 && j < 3) || i <= 13)
+                    {
+                        PokerCard card = new PokerCard(i, j);
+                        _cards.Add(card);
+                    }
+                }
+            }
+        }
+
+        // 随机卡牌
+        private void RandomCards()
+        {
+            // 洗牌
+            if (_cards == null || _cards.Count != CARDSCOUNT) return;
+            int index = CARDSCOUNT;
+            Random random = GetRandom();
+            while (index >= 0)
+            {                
+                int randIndex = random.Next(0, index);
+                var card = _cards[randIndex];
+                _cards.Remove(card);
+                _cards.Insert(_cards.Count - 1, card);
+                index -= 1;
+            }
+
+            // 随机地主主牌
+            int dizhuMark = random.Next(0, CARDSCOUNT - 3);
+            var markCard = _cards[dizhuMark] as PokerCard;
+            markCard.SetShow();
         }
     }
 }

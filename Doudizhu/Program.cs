@@ -7,21 +7,20 @@ namespace MyGame
     {
         static void Main(string[] args)
         {
+            // 创建房间（房间内创建裁判）
+            DoudizhuRoom room = RoomMgr.Ins.CreateRoom<DoudizhuRoom>(1) as DoudizhuRoom;
+
+            // 创建玩家
             List<Player> players = new List<Player>();
             for(int i = 0; i < 3; i++)
             {
-                Player p = new Player(i + 101, string.Format("玩家{0}", i + 1));
+                Player p = PlayerMgr.Instance.CreatePlayer<Player>(i + 101, string.Format("玩家{0}", i + 1)) as Player;                
                 players.Add(p);
-            }
-            Doudizhu ddz = new Doudizhu();
-            ddz.Start();
-            ddz.AddPlayer(players[0], players[1], players[2]);
-            ddz.Licensing();
 
-            foreach (var p in players)
-            {
-                p.ImgPlayer.ShowCard();
+                // 进入房间
+                p.JoinRoom(1);
             }            
+            
 
             Console.ReadKey();            
         }

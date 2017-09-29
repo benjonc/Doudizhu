@@ -10,6 +10,7 @@ namespace MyGame
     {
         private int _playerCount;
         private Dictionary<int, APlayer> _players;
+
         protected Room(int id, int[] types)
         {
             _roomId = id;

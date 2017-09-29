@@ -70,6 +70,7 @@
     <Compile Include="Room\ARoom.cs" />
     <Compile Include="Room\DoudizhuRoom.cs" />
     <Compile Include="Room\Room.cs" />
+    <Compile Include="Room\RoomMgr.cs" />
     <Compile Include="Rule\ARule.cs" />
     <Compile Include="Rule\Doudizhu\Doudizhu.cs" />
   </ItemGroup>

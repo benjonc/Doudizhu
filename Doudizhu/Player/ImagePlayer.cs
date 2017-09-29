@@ -10,22 +10,36 @@ namespace MyGame
     // 人偶类，存储卡牌相关
     class ImagePlayer : APlayer, IAddCard, IPlayCard
     {
-        protected List<ACard> _cards;
-        protected APlayer _master;
+        protected List<PokerCard> _cards;
+        protected Player _master;
 
-        public ImagePlayer(APlayer master)
+        private bool _isDizhu;
+        private DoudizhuReferee _referee;
+        private DoudizhuRoom _room;
+
+        public bool IsDizhu { get { return _isDizhu; } }
+
+        public ImagePlayer(Player master)
         {
-            _master = master;
-            _cards = new List<ACard>();
+            _master = master as Player;
+            _cards = new List<PokerCard>();
+            _isDizhu = false;
+
+            _room = RoomMgr.Ins.GetRoomById(_master.RoomId) as DoudizhuRoom;
+            _referee = _room.Referee;
         }
 
-        public void AddCard(ACard card)
+        public void AddCard(int id) 
         {
+            var card = _referee.GetCardById(id);
             if (card == null) return;
-            if(!_cards.Contains(card))
+            
+            if (!_cards.Contains(card))
             {
                 _cards.Add(card);
             }
+            if (card.IsShow)
+                _isDizhu = true;
         }
 
         public bool PlayCard(ACard[] cards)

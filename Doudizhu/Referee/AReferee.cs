@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace MyGame
 {
     // 裁判抽象类
@@ -6,5 +8,6 @@ namespace MyGame
     {
         // 各种玩法的比较大小的能力
         // 各种玩法的判断输赢的能力
+        protected List<ACard> _cards;
     }
 }

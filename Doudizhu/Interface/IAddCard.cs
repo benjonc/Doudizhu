@@ -2,6 +2,6 @@
 {
     interface IAddCard
     {
-        void AddCard(ACard card);
+        void AddCard(int cardId);
     }
 }

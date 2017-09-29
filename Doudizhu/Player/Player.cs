@@ -9,6 +9,14 @@ namespace MyGame
     {
         private ImagePlayer _imgPlayer;
 
+        private int _roomId;
+
+        public int RoomId
+        {
+            get { return _roomId; }
+        }
+        
+
         public int Id
         {
             get { return _id; }
@@ -56,6 +64,9 @@ namespace MyGame
             args.IntPars.Add(_id);
             args.IntPars.Add(roomId);
             EventMgr.Instance.Notify(EventMsg.PlayerEnterRoom, args);
+
+            _roomId = roomId;
+
             return false;
         }
 

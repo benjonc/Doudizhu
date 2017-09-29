@@ -10,6 +10,23 @@ namespace MyGame
         protected string _dsc;
         protected AReferee _referee;
 
+        public int RoomId
+        {
+            get { return _roomId; }
+            set { _roomId = value; }
+        }
+
+        public int[] Types
+        {
+            get { return _types; }
+            set { _types = value; }
+        }
+
+        public static ARoom InsRoom<T>() where T : ARoom
+        {
+            return null;
+        }
+
         protected virtual void OnPlayerExit(EventMgrArgs args)
         {
             

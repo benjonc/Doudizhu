@@ -8,12 +8,6 @@ namespace MyGame
 {
     class DoudizhuRoom : Room
     {
-        // 根据ID和Types确定房间的描述
-        private void CreateDsc()
-        {
-            _dsc = "";
-        }
-
         // 房间的自己的信息
         // 每一个房间有自己的裁判
         public DoudizhuRoom(int id, int[] types) : base(id, types)
@@ -23,23 +17,16 @@ namespace MyGame
             CreateDsc();
 
             _referee = new DoudizhuReferee();
-
         }
 
-        // 添加玩家
-        public void AddPlayer(APlayer player)
+        public DoudizhuReferee Referee
         {
+            get { return _referee as DoudizhuReferee; }
 
-        }
-
-        // 房间被销毁
-        public bool DestroyRoom()
+        // 根据ID和Types确定房间的描述
+        private void CreateDsc()
         {
-
-            return false;
+            _dsc = "";
         }
-
-        
-
     }
 }
