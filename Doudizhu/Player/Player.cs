@@ -52,6 +52,10 @@ namespace MyGame
 
         public bool JoinRoom(int roomId)
         {
+            EventMgrArgs args = new EventMgrArgs();
+            args.IntPars.Add(_id);
+            args.IntPars.Add(roomId);
+            EventMgr.Instance.Notify(EventMsg.PlayerEnterRoom, args);
             return false;
         }
 

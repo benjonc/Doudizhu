@@ -47,6 +47,7 @@
     <Compile Include="Card\PokerCard.cs" />
     <Compile Include="Event\EventMgr.cs" />
     <Compile Include="Helper\ACardHelper.cs" />
+    <Compile Include="InstanceMgr.cs" />
     <Compile Include="Interface\IAddCard.cs" />
     <Compile Include="Interface\ICheckBigger.cs" />
     <Compile Include="Interface\ICreateRoom.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Referee\AReferee.cs" />
     <Compile Include="Referee\DoudizhuReferee.cs" />
+    <Compile Include="Referee\RefereeMgr.cs" />
     <Compile Include="Room\ARoom.cs" />
     <Compile Include="Room\DoudizhuRoom.cs" />
     <Compile Include="Room\Room.cs" />

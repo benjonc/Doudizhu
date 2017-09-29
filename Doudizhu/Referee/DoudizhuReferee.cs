@@ -7,7 +7,27 @@ namespace MyGame
     // 斗地主裁判类
     class DoudizhuReferee : AReferee, ICheckBigger
     {
+        public const int PLAYERCOUNT = 3;
+        private int _readyCnt = 0;
+        private int _roomId = 0;
         private ImagePlayer _player1, _player2, _player3;
+
+        private void OnPlayerReady(EventMgrArgs args)
+        {
+            _roomId = args.IntPars[0];
+            if (_readyCnt == 3)
+            {
+                EventMgrArgs argsPar = new EventMgrArgs();
+                argsPar.IntPars.Add(10);
+                EventMgr.Instance.Notify(EventMsg.GameStart, argsPar);
+            }
+            _readyCnt += 1;
+        }
+
+        public DoudizhuReferee()
+        {
+            EventMgr.Instance.RegistEvent(EventMsg.PlayerReady, OnPlayerReady);
+        }
 
         public enum CardsType
         {

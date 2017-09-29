@@ -33,5 +33,13 @@ namespace MyGame
 
             return p;
         }
+
+        public APlayer GetPlayer<T>(int id) where T : APlayer
+        {
+            if (_players == null) return null;
+            if (_players.ContainsKey(id)) return _players[id];
+            return null;
+        }
+
     }
 }

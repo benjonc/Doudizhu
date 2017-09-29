@@ -21,7 +21,7 @@ namespace MyGame
             foreach (var p in players)
             {
                 p.ImgPlayer.ShowCard();
-            }
+            }            
 
             Console.ReadKey();            
         }

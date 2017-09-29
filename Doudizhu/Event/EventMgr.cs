@@ -58,8 +58,10 @@ namespace MyGame
     {
         SatisfyPlayers,
         PlayerEnterRoom,
+        PlayerExitRoom,
         GameStart,
-
+        DestroyRoom,
+        PlayerReady,
     }
 
     class EventMgr // : IInstance
